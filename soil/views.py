@@ -5,6 +5,8 @@ from rest_framework import status
 from .models import SoilData
 from .serializers import SoilDataSerializer
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 class SoilDataView(APIView):
     def get(self, request, format=None):
@@ -12,6 +14,7 @@ class SoilDataView(APIView):
         serializer = SoilDataSerializer(soil_data, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+    @method_decorator(csrf_exempt)
     def post(self, request, format=None):
         serializer = SoilDataSerializer(data=request.data)
         if serializer.is_valid():
