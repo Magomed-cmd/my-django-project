@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-oq%j0ogj5*-t_j4)$b8qul(h%bw(r^-!tg=hxy1l3603s&r4hq'
 
 
-#token = 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
+#token = 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
 
 
 

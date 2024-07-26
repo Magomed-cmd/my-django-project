@@ -27,5 +27,6 @@ class SoilDataView(APIView):
         logger.error(f'Errors: {serializer.errors}')
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 def home(request):
     return render(request, 'soil/soil_data.html')
