@@ -13,7 +13,8 @@ SECRET_KEY = 'django-insecure-oq%j0ogj5*-t_j4)$b8qul(h%bw(r^-!tg=hxy1l3603s&r4hq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['my-django-project-gix1.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['my-django-project-gix1.onrender.com', '127.0.0.1', 'localhost', '216.24.57.4']
+
 
 # Application definition
 INSTALLED_APPS = [

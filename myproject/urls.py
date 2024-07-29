@@ -9,4 +9,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('soil.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-#token = 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
+#token = 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
