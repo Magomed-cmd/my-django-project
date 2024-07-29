@@ -77,17 +77,21 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/home/magomed/PycharmProjects/myproject/logs/debug.log',
+            'filename': BASE_DIR / 'logs/debug.log',
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console'],
             'level': 'DEBUG',
             'propagate': True,
         },
     },
 }
+
 
 import os
 
