@@ -69,6 +69,34 @@ DATABASES = {
     }
 }
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/magomed/PycharmProjects/myproject/logs/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+import os
+
+log_file_path = '/path/to/your/django/debug.log'
+if os.path.exists(log_file_path):
+    with open(log_file_path, 'w'):
+        pass  # Просто открываем файл в режиме записи, чтобы очистить его
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
