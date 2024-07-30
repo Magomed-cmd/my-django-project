@@ -15,7 +15,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['my-django-project-gix1.onrender.com', '127.0.0.1', 'localhost', '216.24.57.4']
 
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -69,7 +68,6 @@ DATABASES = {
     }
 }
 
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -92,14 +90,12 @@ LOGGING = {
     },
 }
 
-
 import os
 
 log_file_path = '/path/to/your/django/debug.log'
 if os.path.exists(log_file_path):
     with open(log_file_path, 'w'):
         pass  # Просто открываем файл в режиме записи, чтобы очистить его
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -122,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost",
     "http://216.24.57.4",
-    "http://your-domain.com",
+    "https://my-django-project-gix1.onrender.com",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
