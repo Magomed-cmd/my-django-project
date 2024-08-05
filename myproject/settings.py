@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-oq%j0ogj5*-t_j4)$b8qul(h%bw(r^-!tg=hxy1l3603s&r4hq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']  # Разрешаем все хосты
 
 # Application definition
 INSTALLED_APPS = [
@@ -90,7 +90,9 @@ LOGGING = {
     },
 }
 
-log_file_path = BASE_DIR / 'logs/debug.log'
+import os
+
+log_file_path = '/path/to/your/django/debug.log'
 if os.path.exists(log_file_path):
     with open(log_file_path, 'w'):
         pass  # Просто открываем файл в режиме записи, чтобы очистить его
@@ -113,26 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # CORS settings
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_METHODS = [
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
-]
-CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-]
+CORS_ALLOW_ALL_ORIGINS = True  # Разрешаем все источники
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
