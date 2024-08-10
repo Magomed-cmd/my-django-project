@@ -19,13 +19,16 @@ class SoilDataView(APIView):
         return JsonResponse(serializer.data, safe=False)
 
     def post(self, request, format=None):
+        logger.debug(f'Raw data received: {request.body.decode("utf-8")}')
         logger.info(f'Received data: {request.data}')
         serializer = SoilDataSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            logger.info('Data successfully saved.')
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        logger.error(f'Errors: {serializer.errors}')
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            logger.error(f'Errors: {serializer.errors}')
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 def home(request):
