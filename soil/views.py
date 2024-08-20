@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import SoilData
+from .models import SoilData, ESP32Log
 from .serializers import SoilDataSerializer
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -33,3 +33,29 @@ class SoilDataView(APIView):
 
 def home(request):
     return render(request, 'soil/soil_data.html')
+
+
+
+
+
+
+
+
+from django.http import JsonResponse
+
+def get_logs(request):
+    logs_by_device = {
+        "logs_esp32_1": list(ESP32Log.objects.filter(device_id="esp32_1").order_by('-timestamp').values()),
+        "logs_esp32_2": list(ESP32Log.objects.filter(device_id="esp32_2").order_by('-timestamp').values()),
+        "logs_esp32_3": list(ESP32Log.objects.filter(device_id="esp32_3").order_by('-timestamp').values())
+    }
+    return JsonResponse(logs_by_device)
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Logs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 36px;
+        }
+
+        .log-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .log-section {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 30%;
+            min-height: 300px;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+
+        .log-section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .no-logs {
+            text-align: center;
+            font-style: italic;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>ESP32 Logs</h1>
+
+    <div class="log-container">
+        <div id="log1" class="log-section">
+            <h2>ESP32 1 Logs</h2>
+            <ul id="logs_esp32_1" class="log-list">
+                <li class="no-logs">No logs available</li>
+            </ul>
+        </div>
+
+        <div id="log2" class="log-section">
+            <h2>ESP32 2 Logs</h2>
+            <ul id="logs_esp32_2" class="log-list">
+                <li class="no-logs">No logs available</li>
+            </ul>
+        </div>
+
+        <div id="log3" class="log-section">
+            <h2>ESP32 3 Logs</h2>
+            <ul id="logs_esp32_3" class="log-list">
+                <li class="no-logs">No logs available</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function updateLogs() {
+            fetch('/logs/get/')
+                .then(response => response.json())
+                .then(data => {
+                    const logs1 = data.logs_esp32_1.length > 0 ? data.logs_esp32_1.map(log => `<li>${log}</li>`).join('') : '<li class="no-logs">No logs available</li>';
+                    const logs2 = data.logs_esp32_2.length > 0 ? data.logs_esp32_2.map(log => `<li>${log}</li>`).join('') : '<li class="no-logs">No logs available</li>';
+                    const logs3 = data.logs_esp32_3.length > 0 ? data.logs_esp32_3.map(log => `<li>${log}</li>`).join('') : '<li class="no-logs">No logs available</li>';
+
+                    document.getElementById("logs_esp32_1").innerHTML = logs1;
+                    document.getElementById("logs_esp32_2").innerHTML = logs2;
+                    document.getElementById("logs_esp32_3").innerHTML = logs3;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Автоматически обновляем каждые 5 секунд
+        setInterval(updateLogs, 5000);
+    </script>
+</body>
+</html>
