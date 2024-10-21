@@ -4,8 +4,8 @@ from django.db import models
 class SoilData(models.Model):
     sender1_moisture = models.IntegerField()
     sender2_moisture = models.IntegerField()
-    sender1_ph = models.FloatField(null=True, blank=True)  # Добавляем поле для кислотности
-    sender2_ph = models.FloatField(null=True, blank=True)  # Добавляем второе поле для кислотности
+    sender1_ph = models.FloatField(null=True)  # Добавляем поле для кислотности
+    sender2_ph = models.FloatField(null=True)  # Добавляем второе поле для кислотности
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
