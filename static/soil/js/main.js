@@ -13,9 +13,14 @@ document.addEventListener("DOMContentLoaded", function() {
             url: "/api/soil_data/",
             type: "GET",
             success: function(data) {
+                console.log("Данные получены:", data);  // Отладочное сообщение
+
                 var tableBody = $("#data-table tbody");
                 tableBody.empty();
+
                 for (var i = 0; i < data.length; i++) {
+                    console.log("Отображение строки данных:", data[i]);  // Отладка каждой строки данных
+
                     var row = "<tr class='fade-in'>" +
                         "<td title='Timestamp: " + data[i].timestamp + "'>" + data[i].timestamp + "</td>" +
                         "<td title='Sender 1 Moisture: " + data[i].sender1_moisture + "'>" + data[i].sender1_moisture + "</td>" +
