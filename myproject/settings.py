@@ -74,17 +74,21 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs/debug.log',
+            'filename': BASE_DIR / 'logs/debug.log',  # Логирование в файл
+        },
+        'console': {
+            'class': 'logging.StreamHandler',  # Логирование в консоль
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],  # Убрали 'console', чтобы логи не выводились в терминал
-            'level': 'DEBUG',
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',  # Уровень логирования DEBUG
             'propagate': True,
         },
     },
 }
+
 
 import os
 
