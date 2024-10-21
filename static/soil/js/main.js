@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         "<td title='Timestamp: " + data[i].timestamp + "'>" + data[i].timestamp + "</td>" +
                         "<td title='Sender 1 Moisture: " + data[i].sender1_moisture + "'>" + data[i].sender1_moisture + "</td>" +
                         "<td title='Sender 2 Moisture: " + data[i].sender2_moisture + "'>" + data[i].sender2_moisture + "</td>" +
+                        "<td title='Sender 1 pH: " + data[i].sender1_ph + "'>" + data[i].sender1_ph + "</td>" +  // Добавляем данные pH
+                        "<td title='Sender 2 pH: " + data[i].sender2_ph + "'>" + data[i].sender2_ph + "</td>" +  // Добавляем данные pH
                         "</tr>";
                     tableBody.append(row);
                 }

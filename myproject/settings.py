@@ -67,7 +67,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -77,13 +76,10 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': BASE_DIR / 'logs/debug.log',
         },
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
     },
     'loggers': {
         'django': {
-            'handlers': ['file', 'console'],
+            'handlers': ['file'],  # Убрали 'console', чтобы логи не выводились в терминал
             'level': 'DEBUG',
             'propagate': True,
         },
