@@ -35,6 +35,8 @@ def home(request):
     return render(request, 'soil/soil_data.html')
 
 
+def hamzat_view(request):
+    return render(request, 'soil/hamzat.html')
 
 
 
